@@ -4,7 +4,8 @@ var data = [
         "classType": 1,
         "classStartTime": "10:00AM",
         "classEndTime": "12:00AM",
-        "classLocation": "FG 9000"
+        "classLocation": "FG 9000",
+        "itemColour": "#ff0000"
     }
 ];
 
@@ -61,6 +62,11 @@ $(function () {
             {
                 field: "classLocation",
                 title: "Location",
+                editable: true
+            },
+            {
+                field: "itemColour",
+                title: "Colour",
                 editable: true
             }
         ]
