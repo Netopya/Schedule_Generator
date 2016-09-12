@@ -5,6 +5,7 @@ var data = [
         "classStartTime": "10:00AM",
         "classEndTime": "12:00AM",
         "classLocation": "FG 9000",
+        "classDay": ["mon"],
         "itemColour": "#ff0000"
     }
 ];
@@ -57,6 +58,30 @@ $(function () {
                     combodate: {
                         minuteStep: 15
                     }
+                }
+            },
+            {
+                field: "classDay",
+                title: "Day(s)",
+                editable: {
+                    type: "select2",
+                    source: [
+                            {id: "mon", text: 'Monday'},
+                            {id: "tues", text: 'Tuesday'},
+                            {id: "wed", text: 'Wednesday'},
+                            {id: "th", text: 'Thursday'},
+                            {id: "fri", text: 'Friday'},
+                            {id: "sat", text: 'Saturday'},
+                            {id: "sun", text: 'Sunday'}
+                        ],
+                    select2: {
+                        multiple: true,
+                    }
+                    /*
+                    select2: {
+                        tags: ['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                        tokenSeparators: [',', ' ']
+                    }*/
                 }
             },
             {
