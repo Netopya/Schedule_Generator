@@ -43,6 +43,7 @@
         <!-- select2 bootstrap -->
         <link href="assets/select2-bootstrap.css" rel="stylesheet" type="text/css"></link>  
 
+        <script src="assets/combodate.js"></script>
        <!-- <link rel="stylesheet" href="css/stylesheet.css">-->
         <script src="js/script.js"></script>
     </head>
@@ -56,6 +57,51 @@
                     </div>
                     <div id="collapseItems" class="panel-collapse collapse in">
                         <div class="panel-body">
+                            <form class="form-inline">
+                                <input type="text" class="form-control" placeholder="Item Name">
+                                <select class="form-control">
+                                    <option value="1">Lecture</option>
+                                    <option value="2">Tutorial</option>
+                                    <option value="3">Laboratory</option>
+                                </select>
+                                <input type="text" id="newClassStartTime" data-format="h:mm a" data-template="h : mm a">
+                                <script>
+                                $(function(){
+                                    $('#newClassStartTime').combodate({
+                                        firstItem: 'name', //show 'hour' and 'minute' string at first item of dropdown
+                                        minuteStep: 15,
+                                        customClass: 'form-control'
+                                    });  
+                                });
+                                </script>
+                                <input type="text" id="newClassEndTime" data-format="h:mm a" data-template="h : mm a">
+                                <script>
+                                $(function(){
+                                    $('#newClassEndTime').combodate({
+                                        firstItem: 'name', //show 'hour' and 'minute' string at first item of dropdown
+                                        minuteStep: 15,
+                                        customClass: 'form-control'
+                                    });  
+                                });
+                                </script>
+                                <select multiple id="newClassDays">
+                                    <option value="mon">Monday</option>
+                                    <option value="tues">Tuesday</option>
+                                    <option value="wed">Wednesday</option>
+                                    <option value="th">Thursday</option>
+                                    <option value="fri">Friday</option>
+                                    <option value="sat">Saturday</option>
+                                    <option value="sun">Sunday</option>
+                                </select>
+                                <script>
+                                    $("#newClassDays").select2({
+                                        placeholder: "Days"
+                                    });
+                                </script>
+                                <input type="text" class="form-control" placeholder="Class Location">
+                                <input type="text" class="form-control" placeholder="Colour">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </form>
                             <table id="table">
 
                             </table>
