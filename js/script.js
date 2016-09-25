@@ -98,6 +98,17 @@ $(function () {
     });
 });
 
-function locationFormatter() {
+function addItem() {
+    var newItem = {
+        "className": $("#newItemName").val(),
+        "classType": $("#newItemType").val(),
+        "classStartTime": $("#newClassStartTime").combodate('getValue'),
+        "classEndTime": $("#newClassEndTime").combodate('getValue'),
+        "classLocation": $("#newClassLocation").val(),
+        "classDay": $("#newClassDays").select2("val"),
+        "itemColour": $("#newClassColour").val()
+    }
 
+    $('#table').bootstrapTable("append", newItem);
+    $('#newClassForm')[0].reset();
 }
