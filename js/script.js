@@ -1,5 +1,8 @@
+ID = 0;
+
 var data = [
     {
+        "id": ID,
         "className": "CompSci",
         "classType": 1,
         "classStartTime": "10:00AM",
@@ -15,6 +18,10 @@ $(function () {
         data: data,
         toggle: "table",
         columns: [
+            {
+                field: "id",
+                visible: false
+            },
             {
                 field: "className",
                 title: "Name",
@@ -93,13 +100,39 @@ $(function () {
                 field: "itemColour",
                 title: "Colour",
                 editable: true
+            },
+            {
+                field: 'operate',
+                title: 'Delete',
+                align: 'center',
+                events: operateEvents,
+                formatter: operateFormatter
             }
         ]
     });
 });
 
+function operateFormatter(value, row, index) {
+        return [
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<span class="glyphicon glyphicon-remove text-danger"></span>',
+            '</a>'
+        ].join('');
+    }
+
+
+window.operateEvents = {
+    'click .remove': function (e, value, row, index) {
+        $('#table').bootstrapTable('remove', {
+            field: "id",
+            values: [row.id]    
+        });
+    }
+};
+
 function addItem() {
     var newItem = {
+        "id": ID++,
         "className": $("#newItemName").val(),
         "classType": $("#newItemType").val(),
         "classStartTime": $("#newClassStartTime").combodate('getValue'),
