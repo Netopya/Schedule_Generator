@@ -4,9 +4,9 @@ var data = [
     {
         "id": ID,
         "className": "CompSci",
-        "classType": 1,
-        "classStartTime": "10:00AM",
-        "classEndTime": "12:00AM",
+        "classType": "1",
+        "classStartTime": "10:00 am",
+        "classEndTime": "12:00 am",
         "classLocation": "FG 9000",
         "classDay": ["mon"],
         "itemColour": "#ff0000"
@@ -144,4 +144,28 @@ function addItem() {
 
     $('#table').bootstrapTable("append", newItem);
     $('#newClassForm')[0].reset();
+}
+
+function generateTable() {
+    var tableData = $('#table').bootstrapTable('getData');
+
+    for(var i = 0; i < tableData.length; i++)
+    {
+        tableData[i].classStartTime = formatDate(tableData[i].classStartTime);
+        tableData[i].classEndTime = formatDate(tableData[i].classEndTime);
+    }
+
+    console.log(tableData);
+}
+
+function formatDate(time)
+{
+    var reg = /^(\d{1,2}):(\d{2}) (am|pm)$/g;
+    var match = reg.exec(time);
+    //return new Date(2000, 1, 1, match[2] == "am" ? match[0] : parseInt(match[0]) + 12, match[1], 0, 0);
+    var newDate = new Date();
+    newDate.setMinutes(match[2]);
+    newDate.setHours(match[3] == "am" ? match[1] : parseInt(match[1]) + 12);
+
+    return newDate;
 }
